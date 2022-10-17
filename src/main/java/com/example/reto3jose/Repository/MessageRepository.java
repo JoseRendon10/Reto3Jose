@@ -1,8 +1,7 @@
-package com.reto3.reto3g24.Repository;
+package com.example.reto3jose.Repository;
 
-import com.reto3.reto3g24.Entities.Gama;
-import com.reto3.reto3g24.Entities.Message;
-import com.reto3.reto3g24.Repository.crudRepository.MessageCrudRepository;
+import com.example.reto3jose.Entities.Message;
+import com.example.reto3jose.Repository.crudRepository.MessageCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

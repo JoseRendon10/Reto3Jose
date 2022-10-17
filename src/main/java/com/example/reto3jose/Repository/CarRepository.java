@@ -1,7 +1,7 @@
-package com.reto3.reto3g24.Repository;
+package com.example.reto3jose.Repository;
 
-import com.reto3.reto3g24.Entities.Car;
-import com.reto3.reto3g24.Repository.crudRepository.CarCrudRepository;
+import com.example.reto3jose.Entities.Car;
+import com.example.reto3jose.Repository.crudRepository.CarCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

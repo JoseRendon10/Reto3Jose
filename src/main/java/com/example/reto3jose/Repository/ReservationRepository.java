@@ -1,7 +1,7 @@
-package com.reto3.reto3g24.Repository;
+package com.example.reto3jose.Repository;
 
-import com.reto3.reto3g24.Entities.Reservation;
-import com.reto3.reto3g24.Repository.crudRepository.ReservationCrudRepository;
+import com.example.reto3jose.Entities.Reservation;
+import com.example.reto3jose.Repository.crudRepository.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

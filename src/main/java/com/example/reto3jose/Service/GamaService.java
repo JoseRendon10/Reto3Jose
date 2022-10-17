@@ -1,7 +1,7 @@
-package com.reto3.reto3g24.Service;
+package com.example.reto3jose.Service;
 
-import com.reto3.reto3g24.Entities.Gama;
-import com.reto3.reto3g24.Repository.GamaRepository;
+import com.example.reto3jose.Entities.Gama;
+import com.example.reto3jose.Repository.GamaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

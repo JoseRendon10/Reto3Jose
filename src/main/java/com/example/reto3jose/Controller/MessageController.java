@@ -1,7 +1,7 @@
-package com.reto3.reto3g24.Controller;
+package com.example.reto3jose.Controller;
 
-import com.reto3.reto3g24.Entities.Message;
-import com.reto3.reto3g24.Service.MessageService;
+import com.example.reto3jose.Entities.Message;
+import com.example.reto3jose.Service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

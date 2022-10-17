@@ -1,8 +1,8 @@
-package com.reto3.reto3g24.Service;
+package com.example.reto3jose.Service;
 
 
-import com.reto3.reto3g24.Entities.Client;
-import com.reto3.reto3g24.Repository.ClientRepository;
+import com.example.reto3jose.Entities.Client;
+import com.example.reto3jose.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

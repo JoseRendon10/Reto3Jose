@@ -1,4 +1,4 @@
-package com.reto3.reto3g24.Entities;
+package com.example.reto3jose.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,6 +1,6 @@
-package com.reto3.reto3g24.Repository.crudRepository;
+package com.example.reto3jose.Repository.crudRepository;
 
-import com.reto3.reto3g24.Entities.Client;
+import com.example.reto3jose.Entities.Client;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ClientCrudRepository extends CrudRepository<Client, Integer> {
