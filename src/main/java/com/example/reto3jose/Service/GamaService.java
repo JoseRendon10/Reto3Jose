@@ -9,51 +9,49 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class GamaService {
 
     @Autowired
     private GamaRepository gamaRepository;
 
     public List<Gama> getAll() { return gamaRepository.getAll(); }
-    public Optional<Gama> getGama(int id) { return gamaRepository.getGama(id);}
-    public Gama save(Gama p){
-        if(p.getId()==null){
-            return gamaRepository.save(p);
+    public Optional<Gama> getGama(int id) { return gamaRepository.getGama(id); }
+    public Gama save(Gama gama){
+        if(gama.getId() == null){
+            return gamaRepository.save(gama);
         }else{
-            Optional<Gama> e = gamaRepository.getGama(p.getId());
-            if(e.isPresent()){
-                return p;
+            Optional<Gama> gama1 = gamaRepository.getGama(gama.getId());
+            if(gama1.isPresent()){
+                return gama;
             }else{
-                return gamaRepository.save(p);
+                return gamaRepository.save(gama);
             }
         }
     }
-    public Gama update(Gama p){
-        if(p.getId()!=null) {
-            Optional<Gama> q = gamaRepository.getGama(p.getId());
+    public Gama update(Gama gama){
+        if(gama.getId()!=null) {
+            Optional<Gama> q = gamaRepository.getGama(gama.getId());
             if (q.isPresent()) {
-                if (p.getDescription() != null) {
-                    q.get().setDescription(p.getDescription());
+                if (gama.getDescription() != null) {
+                    q.get().setDescription(gama.getDescription());
                 }
-                if (p.getName() != null) {
-                    q.get().setName(p.getName());
+                if (gama.getName() != null) {
+                    q.get().setName(gama.getName());
                 }
-                gamaRepository.save(q.get());
-                return q.get();
+                return gamaRepository.save(q.get());
             }else{
-                return p;
+                return gama;
             }
         }else{
-            return p;
+            return gama;
         }
     }
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Gama>p= gamaRepository.getGama(id);
-        if(p.isPresent()){
-            gamaRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
+        boolean d = getGama(id).map(gama -> {
+            gamaRepository.delete(gama);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }

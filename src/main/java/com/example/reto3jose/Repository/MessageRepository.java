@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+
 public class MessageRepository {
 
     @Autowired
@@ -17,6 +18,6 @@ public class MessageRepository {
     public List<Message> getAll() { return (List<Message>) messageCrudRepository.findAll(); }
 
     public Optional<Message> getMessage(int id) { return messageCrudRepository.findById(id); }
-    public Message save(Message c) { return messageCrudRepository.save(c); }
-    public void delete(Message c) { messageCrudRepository.delete(c); }
+    public Message save(Message message) { return messageCrudRepository.save(message); }
+    public void delete(Message message) { messageCrudRepository.delete(message); }
 }

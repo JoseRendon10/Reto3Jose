@@ -9,60 +9,59 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class CarService {
 
     @Autowired
     private CarRepository carRepository;
 
     public List<Car> getAll() { return carRepository.getAll(); }
-    public Optional<Car> getCar(int id) { return carRepository.getCar(id);}
-    public Car save(Car p){
-        if(p.getId()==null){
-            return carRepository.save(p);
+    public Optional<Car> getCar(int id) { return carRepository.getCar(id); }
+    public Car save(Car car){
+        if(car.getId() == null){
+            return carRepository.save(car);
         }else{
-            Optional<Car> e = carRepository.getCar(p.getId());
-            if(e.isPresent()){
-                return p;
+            Optional<Car> car1 = carRepository.getCar(car.getId());
+            if(car1.isPresent()){
+                return car;
             }else{
-                return carRepository.save(p);
+                return carRepository.save(car);
             }
         }
     }
-    public Car update(Car p){
-        if(p.getId()!=null){
-            Optional<Car> q = carRepository.getCar(p.getId());
+    public Car update(Car car){
+        if(car.getId()!=null){
+            Optional<Car> q = carRepository.getCar(car.getId());
             if(q.isPresent()){
-                if(p.getName()!=null){
-                    q.get().setName(p.getName());
+                if(car.getName()!=null){
+                    q.get().setName(car.getName());
                 }
-                if(p.getBrand()!=null){
-                    q.get().setBrand(p.getBrand());
+                if(car.getBrand()!=null){
+                    q.get().setBrand(car.getBrand());
                 }
-                if(p.getYear()!=null){
-                    q.get().setYear(p.getYear());
+                if(car.getYear()!=null){
+                    q.get().setYear(car.getYear());
                 }
-                if(p.getDescription()!=null){
-                    q.get().setDescription(p.getDescription());
+                if(car.getDescription()!=null){
+                    q.get().setDescription(car.getDescription());
                 }
-                if(p.getGama()!=null){
-                    q.get().setGama(p.getGama());
+                if(car.getGama()!=null){
+                    q.get().setGama(car.getGama());
                 }
                 carRepository.save(q.get());
                 return q.get();
             }else{
-                return p;
+                return car;
             }
         }else{
-            return p;
+            return car;
         }
     }
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Car>p= carRepository.getCar(id);
-        if(p.isPresent()){
-            carRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
+        boolean d = getCar(id).map(car -> {
+            carRepository.delete(car);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }

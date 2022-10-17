@@ -10,54 +10,53 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
 public class ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
 
     public List<Client> getAll() { return clientRepository.getAll(); }
-    public Optional<Client> getClient(int id) { return clientRepository.getClient(id);}
-    public Client save(Client p){
-        if(p.getId()==null){
-            return clientRepository.save(p);
+    public Optional<Client> getClient(int id) { return clientRepository.getClient(id); }
+    public Client save(Client client){
+        if(client.getIdClient() == null){
+            return clientRepository.save(client);
         }else{
-            Optional<Client> e = clientRepository.getClient(p.getId());
-            if(e.isPresent()){
-                return p;
+            Optional<Client> client1 = clientRepository.getClient(client.getIdClient());
+            if(client1.isPresent()){
+                return client;
             }else{
-                return clientRepository.save(p);
+                return clientRepository.save(client);
             }
         }
     }
-    public Client update(Client p){
-        if(p.getId()!=null){
-            Optional<Client> q = clientRepository.getClient(p.getId());
+    public Client update(Client client){
+        if(client.getIdClient()!=null){
+            Optional<Client> q = clientRepository.getClient(client.getIdClient());
             if(q.isPresent()){
-                if(p.getName()!=null){
-                    q.get().setName(p.getName());
+                if(client.getName()!=null){
+                    q.get().setName(client.getName());
                 }
-                if(p.getAge()!=null){
-                    q.get().setAge(p.getAge());
+                if(client.getAge()!=null){
+                    q.get().setAge(client.getAge());
                 }
-                if(p.getPassword()!=null){
-                    q.get().setPassword(p.getPassword());
+                if(client.getPassword()!=null){
+                    q.get().setPassword(client.getPassword());
                 }
                 clientRepository.save(q.get());
                 return q.get();
             }else{
-                return p;
+                return client;
             }
         }else{
-            return p;
+            return client;
         }
     }
     public boolean delete(int id){
-        boolean flag=false;
-        Optional<Client>p= clientRepository.getClient(id);
-        if(p.isPresent()){
-            clientRepository.delete(p.get());
-            flag=true;
-        }
-        return flag;
+        boolean d = getClient(id).map(client -> {
+            clientRepository.delete(client);
+            return true;
+        }).orElse(false);
+        return d;
     }
 }

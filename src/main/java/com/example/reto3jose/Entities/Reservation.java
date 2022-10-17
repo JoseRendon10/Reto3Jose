@@ -10,7 +10,7 @@ import java.util.Date;
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idReservation;
     private Date startDate;
     private Date devolutionDate;
     private String status = "created";
@@ -25,17 +25,17 @@ public class Reservation {
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
-    @OneToOne
-    @JsonIgnoreProperties("reservation")
-    private Score score;
+   /**@OneToOne
+    @JsonIgnoreProperties("reservation")*/
+    private String score;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public Date getStartDate() {
@@ -78,11 +78,11 @@ public class Reservation {
         this.client = client;
     }
 
-    public Score getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(String score) {
         this.score = score;
     }
 }

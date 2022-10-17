@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+
 public class CarRepository {
 
     @Autowired
@@ -16,7 +17,7 @@ public class CarRepository {
 
     public List<Car> getAll() { return (List<Car>) carCrudRepository.findAll(); }
     public Optional<Car> getCar(int id) { return carCrudRepository.findById(id); }
-    public Car save(Car p) { return carCrudRepository.save(p); }
-    public void delete(Car p) { carCrudRepository.delete(p); }
+    public Car save(Car car) { return carCrudRepository.save(car); }
+    public void delete(Car car) { carCrudRepository.delete(car); }
 
 }
